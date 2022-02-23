@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+  </head>
+  <body>
+    <a-scene>
+    
+    <a-assets>
+<!-- video -->
+        <video id="static_v" autoplay loop="true" src="video/static_vid.mp4"></video>
+
+<!-- 3D models -->
+        <a-asset-item id="Bedroom" src="models/Bedroom/scene.gltf"></a-asset-item>
+        <a-asset-item id="Door" src="models/Room_door/scene.gltf"></a-asset-item>
+        <a-asset-item id="alarm_clock" src="models/alarm_clock/scene.gltf"></a-asset-item>
+
+        
+<!-- images -->
+        <img id="360_view" src="img/360_view.jpg"></a-asset-item>
+        <img id="dungeon" src="img/dungeon.jpg"></a-asset-item>
+        <img id="walltxtr" src="img/hallway_wall.jpg"></a-asset-item>
+        <img id="speak" src="img/speak_sign.png"></a-asset-item>
+        <img id="yellow_arrow" src="img/ylw_arw.png"></a-asset-item>
+
+
+
+<!-- sound -->
+        <!-- <audio id="alarm" src="sfx/morning-alarm.mp3" preload="auto"></audio> -->
+        <audio id="urban_sound" src="sfx/urban-ambience-with-traffic.mp3" preload="auto"></audio>
+        <audio id="line1" src="sfx/line_1.mp3" preload="auto"></audio>
+        <audio id="line2" src="sfx/line_2.mp3" preload="auto"></audio>
+        <audio id="line3" src="sfx/line_3.mp3" preload="auto"></audio>
+        <audio id="line4" src="sfx/line_4.mp3" preload="auto"></audio>
+
+
+    </a-assets>
+
+<!-- main scene -->
+<a-camera>
+<a-cursor></a-cursor>    
+</a-camera>
+
+    <a-sky src="#360_view" rotation="0 -90 0"></a-sky>
+
+    <a-image src="#speak" sound="src: #line1; on: click;" position="-0.742 1.8 -5.575" scale="0.5 0.5 1" animation="property: position; from: -0.742 1.8 -5.575; to: -0.742 1.7 -5.575; loop: true; dir: alternate; dur: 1000; easing: linear;"></a-image>
+    <a-entity text="value: Sequence #1; align: center" position="-0.8317 2.30686 -5.575" scale="5 5 1"></a-entity>
+
+    <a-image src="#speak" sound="src: #line2; on: click" position="4.57697 1.74918 -5.575" scale="0.5 0.5 1" rotation="0 -30 0" animation="property: position; from: 4.57697 1.74918 -5.575; to: 4.57697 1.64918 -5.575; loop: true; dir: alternate; dur: 1000; easing: linear;"></a-image>    
+    <a-entity text="value: Sequence #2; align: center" position="4.57697 3 -5.575" scale="5 5 1" rotation="0 -30 0"></a-entity>
+
+    <a-image src="#speak" sound="src: #line3; on: click" position="-5.976 2.36796 -1.65456" scale="0.5 0.5 1" rotation="0 90 0" animation="property: position; from: -5.976 2.36796 -1.65456; to: -5.976 2.26796 -1.65456; loop: true; dir: alternate; dur: 1000; easing: linear;"></a-image>    
+    <a-entity text="value: Sequence #3; align: center" position="-5.976 3 -1.65456" scale="5 5 1" rotation="0 90 0"></a-entity>
+    <a-image src="#yellow_arrow" position="-5.976 1.5 -1.65456" rotation="0 90 0" scale="1 0.5 1"></a-image>
+
+    <a-image src="#speak" sound="src: sfx/line_4.mp3; on: click" position="-4.62054 1.5 5.22003" scale="0.5 0.5 1" rotation="0 180 0" animation="property: position; from: -4.62054 1.5 5.22003; to: -4.62054 1.4 5.22003; loop: true; dir: alternate; dur: 1000; easing: linear;"></a-image>
+    <a-entity text="value: Sequence #4; align: center" position="-4.62054 2.5 5.22003" scale="5 5 1" rotation="0 180 0"></a-entity>
+
+
+    <a-entity sound="src: #urban_sound; autoplay: true; loop: true;" position="-0.4 2 -9"></a-entity>
+
+    <a-entity gltf-model="#Bedroom" scale="0.01 0.01 0.01"></a-entity>
+    <a-entity gltf-model="#alarm_clock" position="2.1 0.65 1.1" rotation="0 -90 0" scale="0.1 0.1 0.1"
+              sound="src: #alarm; 
+                     autoplay: true;"></a-entity>
+    <a-entity gltf-model="models/Room_door/scene.gltf" scale="0.022 0.018 0.02" position="-4.608 3.808 5.846"></a-entity>                              
+    <a-video src="#static_v" width="16" height="9" position="4.51914 1.23829 -5.58318" rotation="-19.98 -30 0" material="" geometry="" scale="0.03 0.03 1"></a-video>    
+    
+
+
+
+    <a-plane src="#walltxtr" height="100" width="100" rotation="0 -90 0" position="-3.27479 2.17815 11" scale="0.1 0.05 1" material="" geometry=""></a-plane>
+    <a-plane src="#walltxtr" height="100" width="100" rotation="0 90 0" position="-5.9 2.17815 11" scale="0.1 0.05 1" material="" geometry=""></a-plane>
+    <a-plane src="#walltxtr" height="100" width="100" rotation="-90 90 0" position="-4.51551 -0.08408 11" scale="0.1 0.05 1" material="" geometry=""></a-plane>
+    <a-plane src="#walltxtr" height="100" width="100" rotation="90 90 0" position="-4.51551 3.965 11" scale="0.1 0.05 1" material="" geometry=""></a-plane>
+    <a-plane src="#walltxtr" height="100" width="100" rotation="0 -180 0" position="-4.57475 1.84944 16.03016" scale="0.1 0.05 1" material="" geometry=""></a-plane>
+
+
+    <a-link href="forest_path.html" title="The outside world" image="#dungeon" position="-4.577 1.441 15.8" scale="" geometry="primitive: circle; radius: 1.6; segments: 6" material="shader: portal; pano: http://127.0.0.1:5500/img/dungeon.jpg; side: double" link="" visible=""><a-entity text="color: #ffd500; align: center; font: kelsonsans; value: portal; width: 5" position="" rotation="0 180 0" scale="0.5 0.5 1"></a-entity>
+
+
+  </a-scene>
+  </body>
+</html>

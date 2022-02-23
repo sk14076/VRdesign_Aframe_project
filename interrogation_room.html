@@ -1,0 +1,53 @@
+<html>
+<head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+</head>
+<body>
+    <a-scene>
+
+        <a-assets>
+<!-- image -->
+        <img id="speak" src="img/speak_sign.png"></a-asset-item>
+        <img id="warning" src="img/warning-sign.png"></a-asset-item>
+
+
+<!-- 3D models -->
+        <a-asset-item id="interrogation_room" src="models/interrogation_room/scene.gltf"></a-asset-item>
+        <a-asset-item id="ghost" src="models/ghost/scene.gltf"></a-asset-item>
+
+
+<!-- sfx -->
+        <audio id="horror" src="sfx/horror_scene.mp3" preload="auto"></audio>
+        <audio id="zombie_sound" src="sfx/zombie_growl.mp3" preload="auto"></audio>
+        <audio id="line5" src="sfx/line_5.mp3" preload="auto"></audio>
+
+
+        </a-assets>
+
+
+<!-- main scene -->
+<a-camera>
+<a-cursor></a-cursor>
+</a-camera>
+
+    <a-entity gltf-model="#interrogation_room" scale="0.01 0.01 0.02" rotation="0 180 0"
+              sound="src: #horror; 
+              autoplay: true;
+              loop: true"></a-entity>
+    
+    <a-image src="#warning" scale="0.5 0.5 1" position="-0.14819 2.54192 -1.54714" material="" geometry=""></a-image>
+
+    <a-entity text="value: Warning! Do not move your position!; align: center" position="0.05 1.745 -1.5" scale="5 5 1" rotation="0 0 0"></a-entity>
+    <a-entity text="value:  Please focus on the moving head figure.; align: center" position="0.05 1.5 -1.5" scale="5 5 1" rotation="0 0 0"></a-entity>
+
+    <a-image src="#speak" sound="src: #line5; on: click;" scale="2 2 0" animation="property: position; from: 0.05 1.5 -1.5; to: 0.05 0.7 -1.5; loop: true; dir: alternate; dur: 1000; easing: linear;"></a-image>
+    <a-entity gltf-model="models/ghost/scene.gltf" sound="src: #zombie_sound; autoplay: true; loop: 0; rolloffFactor: 0.00001; refDistance: 0.00001; volume: 4" position="0.00446 0.14771 -15" scale="0.03 0.03 0.03" animation="property: position; to: 0.00446 0.14771 5; loop: true; dur: 15000;"></a-entity>
+
+    <a-link href="interrogation_room.html" title="The outside world" image="#dungeon" position="-4.577 1.441 15.8" scale="" geometry="primitive: circle; radius: 1.6; segments: 6" material="shader: portal; pano: http://127.0.0.1:5500/img/dungeon.jpg; side: double" link="" visible=""><a-entity text="color: #ffd500; align: center; font: kelsonsans; value: portal; width: 5" position="" rotation="0 180 0" scale="0.5 0.5 1"></a-entity>
+
+
+    </a-scene>
+</body>
+</html>
